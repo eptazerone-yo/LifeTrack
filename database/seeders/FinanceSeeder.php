@@ -25,17 +25,17 @@ class FinanceSeeder extends Seeder
                 'user_id' => $user->id,
                 'date' => now()->addDays(3),
                 'type' => 'expense',
-                'category' => 'Makan',
-                'amount' => 250000,
-                'description' => 'Makan dan jajan',
+                'category' => 'Baju',
+                'amount' => 150000,
+                'description' => 'Kaos Uniqlo',
             ],
             [
                 'user_id' => $user->id,
                 'date' => now()->addDays(7),
                 'type' => 'expense',
                 'category' => 'Transport',
-                'amount' => 100000,
-                'description' => 'Ongkos kampus',
+                'amount' => 30000,
+                'description' => 'Bensin euy',
             ],
         ]);
     }

@@ -47,7 +47,7 @@ class ScheduleController extends Controller
 
         return redirect()
             ->route('schedule.index')
-            ->with('success', 'Jadwal berhasil ditambahkan!');
+            ->with('success', 'Yeay, Jadwal berhasil ditambahkan!');
     }
 
     public function edit(Schedule $schedule)
@@ -75,7 +75,7 @@ class ScheduleController extends Controller
 
         return redirect()
             ->route('schedule.index')
-            ->with('success', 'Jadwal berhasil diperbarui!');
+            ->with('success', 'Yeay, Jadwal berhasil diperbarui!');
     }
 
 
@@ -87,7 +87,7 @@ class ScheduleController extends Controller
 
         return redirect()
             ->route('schedule.index')
-            ->with('success', 'Jadwal berhasil dihapus!');
+            ->with('success', 'Yeay, Jadwal berhasil dihapus!');
     }
 
 

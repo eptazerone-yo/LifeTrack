@@ -37,7 +37,7 @@ class WishlistController extends Controller
             'priority' => $request->priority,
         ]);
 
-        return redirect()->route('wishlist.index')->with('success', 'Wishlist berhasil ditambahkan!');
+        return redirect()->route('wishlist.index')->with('success', 'Yeay, Wishlist berhasil ditambahkan!');
     }
 
     public function edit(Wishlist $wishlist)
@@ -59,7 +59,7 @@ class WishlistController extends Controller
 
         $wishlist->update($request->only(['item_name', 'price', 'status', 'priority']));
 
-        return redirect()->route('wishlist.index')->with('success', 'Wishlist berhasil diperbarui!');
+        return redirect()->route('wishlist.index')->with('success', 'Yeay, Wishlist berhasil diperbarui!');
     }
 
     public function destroy(Wishlist $wishlist)
@@ -67,7 +67,7 @@ class WishlistController extends Controller
         if ($wishlist->user_id !== Auth::id()) abort(403);
 
         $wishlist->delete();
-        return redirect()->route('wishlist.index')->with('success', 'Wishlist berhasil dihapus!');
+        return redirect()->route('wishlist.index')->with('success', 'Yeay, Wishlist berhasil dihapus!');
     }
 }
 

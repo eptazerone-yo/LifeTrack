@@ -12,7 +12,6 @@
     80% { transform: translateX(6px); }
     100% { transform: translateX(0); }
 }
-
 .shake {
     animation: shake 0.45s ease-in-out;
 }
@@ -21,8 +20,7 @@
 <div class="row min-vh-100 align-items-center">
 
     {{-- LEFT BRAND --}}
-   <div class="col-md-6 d-none d-md-flex p-5 flex-column bg-gray-100 justify-content-center">
-
+    <div class="col-md-6 d-none d-md-flex p-5 flex-column bg-gray-100 justify-content-center">
         <div>
             <h1 class="fw-bold mb-3 lifetrack-title">LifeTrack</h1>
             <p class="text-muted">
@@ -51,11 +49,11 @@
         {{-- ERROR MESSAGE --}}
         @if ($errors->any())
             <div class="alert alert-danger shake">
-                @if ($errors->has('password'))
-                    Password dan konfirmasi password tidak sesuai.
-                @else
-                    Data yang dimasukkan tidak valid.
-                @endif
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
 
@@ -69,8 +67,9 @@
                     type="text"
                     name="name"
                     value="{{ old('name') }}"
-                    class="form-control"
+                    class="form-control @error('name') is-invalid @enderror"
                     required
+                    autofocus
                 >
             </div>
 
@@ -81,7 +80,7 @@
                     type="email"
                     name="email"
                     value="{{ old('email') }}"
-                    class="form-control"
+                    class="form-control @error('email') is-invalid @enderror"
                     required
                 >
             </div>
@@ -92,7 +91,7 @@
                 <input
                     type="password"
                     name="password"
-                    class="form-control {{ $errors->has('password') ? 'shake' : '' }}"
+                    class="form-control @error('password') shake is-invalid @enderror"
                     required
                 >
             </div>
@@ -103,12 +102,12 @@
                 <input
                     type="password"
                     name="password_confirmation"
-                    class="form-control {{ $errors->has('password') ? 'shake' : '' }}"
+                    class="form-control @error('password') shake is-invalid @enderror"
                     required
                 >
             </div>
 
-            <button class="btn btn-dark w-100">
+            <button type="submit" class="btn btn-dark w-100">
                 Register
             </button>
 

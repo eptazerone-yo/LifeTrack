@@ -12,28 +12,32 @@ class WishlistSeeder extends Seeder
     {
         $user = User::first();
 
-        Wishlist::insert([
-            [
-                'user_id' => $user->id,
-                'item_name' => 'Headset Wireless',
-                'price' => 350000,
-                'status' => 'pending',
-                'priority' => 1,
-            ],
-            [
-                'user_id' => $user->id,
-                'item_name' => 'Keycaps Mechanical',
-                'price' => 200000,
-                'status' => 'on_going',
-                'priority' => 2,
-            ],
-            [
-                'user_id' => $user->id,
-                'item_name' => 'Cooling Pad Laptop',
-                'price' => 150000,
-                'status' => 'done',
-                'priority' => 3,
-            ],
-        ]);
+        if (!$user) {
+            return;
+        }
+
+       Wishlist::insert([
+    [
+        'user_id' => $user->id,
+        'item_name' => 'Headset Wireless',
+        'price' => 350000,
+        'status' => 'ingin',
+        'priority' => 1, // 🔥 ANGKA
+    ],
+    [
+        'user_id' => $user->id,
+        'item_name' => 'Keycaps Mechanical',
+        'price' => 200000,
+        'status' => 'ditunda',
+        'priority' => 2,
+    ],
+    [
+        'user_id' => $user->id,
+        'item_name' => 'Cooling Pad Laptop',
+        'price' => 150000,
+        'status' => 'dibeli',
+        'priority' => 3,
+    ],
+]);
     }
 }

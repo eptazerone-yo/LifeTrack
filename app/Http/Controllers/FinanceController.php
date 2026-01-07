@@ -64,7 +64,7 @@ class FinanceController extends Controller
 
         $finance->update($request->only(['type','category','amount','date','description']));
 
-        return redirect()->route('finance.index')->with('success', 'Data keuangan berhasil diupdate!');
+        return redirect()->route('finance.index')->with('success', 'Yeay, Data keuangan berhasil diupdate!');
     }
 
     public function destroy(Finance $finance)
@@ -72,7 +72,7 @@ class FinanceController extends Controller
         $this->authorizeFinance($finance);
         $finance->delete();
 
-        return redirect()->route('finance.index')->with('success', 'Data keuangan berhasil dihapus!');
+        return redirect()->route('finance.index')->with('success', 'Yeay, Data keuangan berhasil dihapus!');
     }
 
     private function authorizeFinance(Finance $finance)

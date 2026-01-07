@@ -22,11 +22,13 @@ Route::get('/', function () {
 });
 
 // Auth Routes: Login & Register
-Route::get('/register', [RegisterController::class, 'showForm'])->name('register.form');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/login', [LoginController::class, 'showForm'])->name('login.form');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [RegisterController::class, 'showForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
 
 // Forgot password atau reset bisa ditambahkan nanti
 

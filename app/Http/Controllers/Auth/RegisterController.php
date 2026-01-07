@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -16,18 +18,26 @@ class RegisterController extends Controller
     }
 
     // Proses register
-    public function register(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed', // harus ada password_confirmation
-        ]);
+public function register(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|confirmed|min:6',
+    ]);
 
-        User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password), // ✅ hash password
-        ]);
+    // ✅ SIMPAN KE VARIABEL
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
 
-        return redirect()->route('login.form')->with('success', 'Akun berhasil dibuat, silakan login!');
-    }
+    // ✅ AUTO LOGIN (INI SEKARANG AMAN)
+    Auth::login($user);
+
+    return redirect()->route('dashboard');
 }
+}
+
+

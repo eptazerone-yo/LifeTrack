@@ -12,12 +12,14 @@ class DatabaseSeeder extends Seeder
     {
         // 🔒 Anti duplicate user
         $user = User::firstOrCreate(
-            ['email' => 'user@example.com'],
-            [
-                'name' => 'User Default',
-                'password' => Hash::make('12345678'),
-            ]
-        );
+        ['email' => 'userdefault@gmail.com'],
+        [
+        'name' => 'User Default',
+        'password' => Hash::make('12341234'),
+        'email_verified_at' => now(),
+    ]
+);
+
 
         $this->call([
             ScheduleSeeder::class,
